@@ -230,7 +230,7 @@ class ProxyHandler:
                 async def forward_tcp_to_ws():
                     try:
                         while True:
-                            data = await reader.read(4096)
+                            data = await reader.read(32768)
                             if not data:
                                 break
                             await websocket.send_bytes(data)
@@ -343,7 +343,7 @@ class ProxyHandler:
                 async def forward_tcp_to_ws():
                     try:
                         while True:
-                            data = await reader.read(4096)
+                            data = await reader.read(32768)
                             if not data:
                                 break
                             await websocket.send_bytes(data)
@@ -435,7 +435,7 @@ class ProxyHandler:
                 async def forward_tcp_to_ws():
                     try:
                         while True:
-                            data = await reader.read(4096)
+                            data = await reader.read(32768)
                             if not data:
                                 break
                             await websocket.send_bytes(data)
