@@ -207,7 +207,12 @@ class ProxyHandler:
             resolved_host = await resolve_host(host)
             
             try:
-                reader, writer = await asyncio.open_connection(resolved_host, port)
+                
+                # 改成：加 5 秒超时
+                reader, writer = await asyncio.wait_for(
+                    asyncio.open_connection(resolved_host, port), timeout=5
+                )
+
                 
                 # 发送剩余数据
                 if i < len(first_msg):
